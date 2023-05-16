@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const date = require(__dirname + "/date.js");
 
 const app = express();
@@ -11,6 +12,37 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+mongoose.connect("mongodb://127.0.0.1:27017/todolistDB")
+
+const itemsSchema = {
+  name: String
+}
+
+const Item = mongoose.model("item", itemsSchema);
+
+const task1 = new Item ({
+  name: "Task 1",
+});
+
+const task2 = new Item ({
+  name: "Task 2",
+});
+
+const task3 = new Item ({
+  name: "Task 3",
+});
+
+const deafultTasks = [task1, task2, task3];
+
+Item.insertMany(deafultTasks)
+    .then(function(){
+    console.log("successfully inserted deafultTask!")
+  }).catch(function(err){
+    console.log(err)
+  });
+
+
 
 app.get("/", function (req, res) {
     const day = date.getDate();
