@@ -35,20 +35,26 @@ const task3 = new Item ({
 
 const deafultTasks = [task1, task2, task3];
 
-// Item.insertMany(deafultTasks)
-//     .then(function(){
-//     console.log("successfully inserted deafultTask!")
-//   }).catch(function(err){
-//     console.log(err)
-//   });
 
 
 app.get("/", function (req, res) {
   const day = date.getDate();
   
-   Item.find({})
-  .then(function(foundItem){
-    res.render("list", { listTitle: day, newListItems: foundItem });
+  Item.find({})
+  .then(function(foundItems){
+    if(foundItems.length === 0) {
+      
+      Item.insertMany(deafultTasks)
+          .then(function(){
+          console.log("successfully inserted deafultTask!")
+        }).catch(function(err){
+          console.log(err)
+        });
+        res.redirect("/");
+    }else {
+      
+      res.render("list", { listTitle: day, newListItems: foundItems });
+    }
   }).catch(function(err){
     console.log(err)
   });
