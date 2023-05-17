@@ -95,9 +95,24 @@ app.post("/delete", function(req,res) {
 })
 
 
-app.get("/work", function(req, res) {
-    res.render("list", {listTitle: "Work List", newListItems: workItems});
+app.get("/:costumListName", function(req, res) {
+    const costumListName = req.params.costumListName;
+    
+    const listSchema = {
+      name: String,
+      items: [{listSchema}]
+    }
+    
+    const List = mongoose.model("list", listSchema);
+
+    
+
+    // res.render("list", {listTitle: "Work List", newListItems: workItems});
 })
+
+
+
+
 
 app.post("/work", function(req, res) {
     const item = req.body.newList;
