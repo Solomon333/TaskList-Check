@@ -1,8 +1,8 @@
 # TaskList-Check
 
 
-- ussefull task menager.
-- add daily task
-- track your daily task
-- check task and remove from list
+- Ussefull task menager.
+- Add daily task
+- Track your daily task
+- Check task and remove from list
 - Database- mongoDB - mongoose.
