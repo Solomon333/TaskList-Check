@@ -34,7 +34,12 @@ const task3 = new Item ({
 
 const deafultTasks = [task1, task2, task3];
 
+const listSchema = {
+  name: String,
+  items: [itemsSchema]
+}
 
+const List  = mongoose.model("List",listSchema )
 
 app.get("/", function (req, res) {
   const day = date.getDate();
@@ -88,9 +93,27 @@ app.post("/delete", function(req,res) {
 app.get("/:customListName", function(req, res) {
   const customListName = req.params.customListName ;
 
-
-
+  List.findOne({name: customListName}).then(foundList => {
+    if(foundList) {
+      res.render("list", {
+        listTitle: foundList.name,
+        newListItems: foundList.items
+      })
+    }else {
+      
+      const list = new List({
+        name: customListName,
+        items: deafultTasks
+      })
+      list.save();
+      res.redirect("/" + customListName);
+    }
+  }).catch(err => console.log(err.body));
+  
 });
+
+
+
 
 app.get("/about", function(req, res) {
     res.render("about")
