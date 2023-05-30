@@ -9,7 +9,6 @@ const workItems = [];
 
 
 app.set("view engine", "ejs");
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -72,14 +71,6 @@ app.post("/", function (req, res) {
 
       res.redirect("/");
 
-//  if (req.body.list === "Work") {
-//      workItems.push(item);
-//      res.redirect("/work");
-//  } else{
-//     newItems.push(item);
-//      res.redirect("/");
-//  }
-
 });
 
 app.post("/delete", function(req,res) {
@@ -94,31 +85,12 @@ app.post("/delete", function(req,res) {
   res.redirect("/");
 })
 
-
-app.get("/:costumListName", function(req, res) {
-    const costumListName = req.params.costumListName;
-    
-    const listSchema = {
-      name: String,
-      items: [{listSchema}]
-    }
-    
-    const List = mongoose.model("list", listSchema);
-
-    
-
-    // res.render("list", {listTitle: "Work List", newListItems: workItems});
-})
+app.get("/:customListName", function(req, res) {
+  const customListName = req.params.customListName ;
 
 
 
-
-
-app.post("/work", function(req, res) {
-    const item = req.body.newList;
-    workItems.push(item);
-    res.redirect("/");
-})
+});
 
 app.get("/about", function(req, res) {
     res.render("about")
