@@ -106,7 +106,7 @@ app.get("/:customListName", function(req, res) {
         items: deafultTasks
       })
       list.save();
-      res.redirect("/" + customListName);
+     res.redirect("/" + customListName);
     }
   }).catch(err => console.log(err.body));
   
