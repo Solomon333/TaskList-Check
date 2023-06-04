@@ -1,8 +1,8 @@
 # TaskList-Check
 
+Database- mongoDB.
 
-- Ussefull task menager.
-- Add daily task.
-- Track your daily task.
-- Check task and remove from list.
-- Database- mongoDB.
+- Add tasks.
+- Track tasks.
+- Check tasks.
+- remove tasks from list.
