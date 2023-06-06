@@ -1,12 +1,12 @@
  TaskList-Check
 
 
-- Database- mongoDB.
+- Database- mongoDB
 
-- Add tasks.
+- Add tasks
 
-- Track tasks.
+- Track tasks
 
-- Check tasks.
+- Check tasks
 
-- remove tasks from list.
+- remove tasks from list
