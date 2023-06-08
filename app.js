@@ -89,15 +89,25 @@ app.post("/", function (req, res) {
 
 app.post("/delete", function(req,res) {
   const checkedItemId = req.body.checkbox;
-  const listName = req.body.listName
+  const listName = req.body.listName;
 
-  const item = Item.findByIdAndRemove(checkedItemId)
-  .then(function(){
-    console.log("item removed")
-  }).catch(function(err){
-    console.log(err)
-  })
-  res.redirect("/");
+  if(listName === "work"){
+
+    Item.findByIdAndRemove(checkedItemId)
+   .then(function(){
+     console.log("item removed")
+   }).catch(function(err){
+     console.log(err)
+   })
+   
+  } else {
+    List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: checkedItemId}}})
+    .then(function(err, foundList){
+      if(!err){
+        
+      }
+    })
+  }
 })
 
 app.get("/:customListName", function(req, res) {
