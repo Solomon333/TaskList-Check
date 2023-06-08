@@ -83,6 +83,9 @@ app.post("/", function (req, res) {
           foundList.items.push(item);
           foundList.save();
           res.redirect("/" + listName);
+        })
+        .catch(function(err){
+          console.log(err)
         });
     }
 });
@@ -99,16 +102,18 @@ app.post("/delete", function(req,res) {
    }).catch(function(err){
      console.log(err)
    })
-   
+   res.redirect("/");
   } else {
     List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: checkedItemId}}})
     .then(function(err, foundList){
       if(!err){
-        
+        res.redirect("/" + listName);
       }
-    })
+    });
   }
 })
+
+
 
 app.get("/:customListName", function(req, res) {
   const customListName = req.params.customListName ;
