@@ -94,7 +94,7 @@ app.post("/delete", function(req,res) {
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
 
-  if(listName === "work"){
+ 
 
     Item.findByIdAndRemove(checkedItemId)
    .then(function(){
@@ -102,15 +102,7 @@ app.post("/delete", function(req,res) {
    }).catch(function(err){
      console.log(err)
    })
-   res.redirect("/");
-  } else {
-    List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: checkedItemId}}})
-    .then(function(err, foundList){
-      if(!err){
-        res.redirect("/" + listName);
-      }
-    });
-  }
+   res.redirect("/" + listName);
 })
 
 
