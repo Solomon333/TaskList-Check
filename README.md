@@ -9,4 +9,4 @@
 
 - Check tasks
 
-- remove and add tasks from list
+- remove and add tasks
