@@ -73,7 +73,7 @@ app.post("/", function (req, res) {
       const item = new Item({
         name: itemName,
       })
-    if(listName === "today"){
+    if(listName === "Today"){
 
       item.save();
       res.redirect("/");
@@ -94,16 +94,20 @@ app.post("/delete", function(req,res) {
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
 
- 
+    if(listName === "Today"){
 
-    Item.findByIdAndRemove(checkedItemId)
-   .then(function(){
-     console.log("item removed")
-   }).catch(function(err){
-     console.log(err)
-   })
-   res.redirect("/" + listName);
-})
+      Item.findByIdAndRemove(checkedItemId)
+     .then(function(){
+       console.log("item removed")
+     }).catch(function(err){
+       console.log(err)
+     })
+     res.redirect("/" + listName);
+    } else {
+
+    }
+
+});
 
 
 
