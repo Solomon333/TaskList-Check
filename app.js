@@ -90,25 +90,26 @@ app.post("/", function (req, res) {
     }
 });
 
-app.post("/delete", function(req,res) {
-  const checkedItemId = req.body.checkbox;
+
+app.post("/delete", function(req, res){
+ 
+  const checkedItemId = req.body.checkbox.trim();
   const listName = req.body.listName;
-
-    if(listName === "Today"){
-
-      Item.findByIdAndRemove(checkedItemId)
-     .then(function(){
-       console.log("item removed")
-     }).catch(function(err){
-       console.log(err)
-     })
-     res.redirect("/" + listName);
-    } else {
-
-    }
-
+ 
+  if(listName === "Today") {
+ 
+    Item.findByIdAndRemove(checkedItemId).then(function(foundItem){Item.deleteOne({_id: checkedItemId})})
+ 
+    res.redirect("/");
+ 
+  } else {
+    List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: checkedItemId}}}).then(function (foundList)
+      {
+        res.redirect("/" + listName);
+      });
+  }
+ 
 });
-
 
 
 app.get("/:customListName", function(req, res) {
