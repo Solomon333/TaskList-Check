@@ -2,13 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const date = require(__dirname + "/date.js");
+const _ = require("lodash");
 
 const app = express();
-const newItems = [];
-const workItems = [];
-
 
 app.set("view engine", "ejs");
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -113,7 +112,7 @@ app.post("/delete", function(req, res){
 
 
 app.get("/:customListName", function(req, res) {
-  const customListName = req.params.customListName ;
+  const customListName = _.capitalize(req.params.customListName);
 
   List.findOne({name: customListName}).then(foundList => {
     if(foundList) {
