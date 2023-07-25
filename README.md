@@ -3,7 +3,7 @@
 
 - Database:  mongoDB, mongosh.
 
-- Add. Track. Check and Remove Tasks.
+- Add and Remove. Track. Check and  Tasks.
 
 - Track tasks.
 
