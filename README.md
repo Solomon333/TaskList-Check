@@ -1,7 +1,10 @@
  TaskList-Check
 
 
-- Database- mongoDB, mongosh.
+- Database
+- mongoDB
+
+- mongosh.
 
 - Add tasks.
 
