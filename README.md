@@ -1,6 +1,6 @@
 
 
-<<<<<<< HEAD
+ HEAD
 - Database
 - mongoDB
 
