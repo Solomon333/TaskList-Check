@@ -4,7 +4,7 @@
  
  Database
   
-- mongoDB
+ mongoDB
 
 - mongosh.
 
