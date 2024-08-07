@@ -6,7 +6,7 @@
   
  mongoDB
 
-- mongosh.
+ mongosh
 
 - Database:  mongoDB, mongosh
 
