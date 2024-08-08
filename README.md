@@ -10,7 +10,7 @@
 
  Database:  mongoDB, mongosh
 
-- Add and Remove.Track. Check and
+ Add and Remove.Track. Check and
 - Tasks
 
 - Track tasks
