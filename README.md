@@ -16,6 +16,6 @@
 
  Track tasks
   
-- Check tasks
+ Check tasks
 
  remove and add tasks
