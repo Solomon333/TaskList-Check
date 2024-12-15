@@ -2,9 +2,7 @@
 
  HEAD
  
- Database  mongoDB
-
- mongosh
+ Database  mongoDB mongosh
 
  Database:  
  mongoDB, mongosh
