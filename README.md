@@ -20,4 +20,5 @@
   
  Check tasks
 
- remove and add tasks
+ remove task.
+ add tasks
